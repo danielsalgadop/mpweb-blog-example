@@ -16,8 +16,8 @@ class PostController extends Controller
     {
         $jsonRequestBody = json_decode($request->getContent(), true);
 
-        $title = filter_var($jsonRequestBody['title'], FILTER_SANITIZE_STRING);
-        $body = filter_var($jsonRequestBody['body'], FILTER_SANITIZE_STRING);
+        $title = filter_var($jsonRequestBody['title'] ?? '', FILTER_SANITIZE_STRING);
+        $body = filter_var($jsonRequestBody['body'] ?? '', FILTER_SANITIZE_STRING);
 
         $command = new CreatePostCommand($title, $body);
         $handler = $this->get('blog.command_handler.create_post');

@@ -8,8 +8,36 @@ Accept: application/json
 Content-Type: application/json
 
 {
-    "title": "A second Lorem Ipsum post 55555555555555555555555555555555555555555555555555555555555555",
+    "title": "A second Lorem Ipsum post",
     "body": "Sed enim mi, bibendum eu pulvinar vel, sodales vitae dui. Pellentesque sed sapien lorem, at lacinia urna."
+}
+
+### Invalid title (too long)
+POST http://{{ host }}:{{ port }}/posts
+Accept: application/json
+Content-Type: application/json
+
+{
+    "title": "A second Lorem Ipsum post with too many characters in the title",
+    "body": "Sed enim mi, bibendum eu pulvinar vel, sodales vitae dui. Pellentesque sed sapien lorem, at lacinia urna."
+}
+
+### Missing title
+POST http://{{ host }}:{{ port }}/posts
+Accept: application/json
+Content-Type: application/json
+
+{
+    "body": "Sed enim mi, bibendum eu pulvinar vel, sodales vitae dui. Pellentesque sed sapien lorem, at lacinia urna."
+}
+
+### Missing body
+POST http://{{ host }}:{{ port }}/posts
+Accept: application/json
+Content-Type: application/json
+
+{
+    "title": "I am missing a body"
 }
 
 ###
