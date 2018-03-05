@@ -1,0 +1,14 @@
+parameters:
+
+services:
+  blog.repository.post:
+    class: BlogBundle\Repository\MySQLPostRepository
+    public: false
+    arguments:
+      - "@doctrine.orm.default_entity_manager"
+
+  blog.command_handler.create_post:
+    class: Blog\Application\CommandHandler\Post\CreatePostHandler
+    public: true
+    arguments:
+      - "@blog.repository.post"

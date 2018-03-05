@@ -1,0 +1,9 @@
+home:
+  path: /
+  defaults: { _controller: BlogBundle:Home:home }
+  methods: [GET]
+
+create_post:
+  path: /posts
+  defaults: { _controller: BlogBundle:Post:createPost }
+  methods: [POST]

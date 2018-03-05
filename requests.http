@@ -1,0 +1,15 @@
+### Get home route
+GET http://{{ host }}:{{ port }}
+Accept: application/json
+
+### Create a post
+POST http://{{ host }}:{{ port }}/posts
+Accept: application/json
+Content-Type: application/json
+
+{
+    "title": "A second Lorem Ipsum post 55555555555555555555555555555555555555555555555555555555555555",
+    "body": "Sed enim mi, bibendum eu pulvinar vel, sodales vitae dui. Pellentesque sed sapien lorem, at lacinia urna."
+}
+
+###

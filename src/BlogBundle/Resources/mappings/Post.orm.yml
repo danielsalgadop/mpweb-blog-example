@@ -1,0 +1,16 @@
+Blog\Domain\Post:
+  type: entity
+  table: posts
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    title:
+      type: string
+      length: 30
+    body:
+      type: string
+    isPublished:
+      type: boolean
