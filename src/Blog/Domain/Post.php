@@ -20,8 +20,8 @@ class Post
         $this->validateTitle($title);
         $this->validateBody($body);
 
-        $this->title = $title;
-        $this->body = $body;
+        $this->title = filter_var($title, FILTER_SANITIZE_STRING);
+        $this->body = filter_var($body, FILTER_SANITIZE_STRING);
         $this->isPublished = $isPublished;
     }
 
