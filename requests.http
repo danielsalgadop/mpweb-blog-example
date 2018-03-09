@@ -40,4 +40,8 @@ Content-Type: application/json
     "title": "I am missing a body"
 }
 
+### Publish post
+PUT http://{{ host }}:{{ port }}/publish/5
+Accept: application/json
+
 ###

@@ -4,6 +4,8 @@ namespace BlogBundle\Controller;
 
 
 use Blog\Application\Command\Post\CreatePostCommand;
+use Blog\Application\Command\Post\PublishPostCommand;
+use Blog\Domain\Exception\BadOperationException;
 use Blog\Domain\Exception\InvalidArgumentException;
 use Blog\Domain\Exception\RepositoryException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,6 +32,25 @@ class PostController extends Controller
                 200
             );
         } catch (InvalidArgumentException $e) {
+            return new JsonResponse(['error' => $e->getMessage()], 400);
+        } catch (RepositoryException $e) {
+            return new JsonResponse(['error' => 'An application error has occurred'], 500);
+        }
+    }
+
+    public function publishPostAction(int $postId):JsonResponse
+    {
+        $command = new PublishPostCommand($postId);
+        $handler = $this->get('blog.command_handler.publish_post');
+
+        try {
+            $post = $handler->execute($command);
+            $this->end();
+            return new JsonResponse(
+                ['success' => 'Post published correctly', 'post' => $post->toArray()],
+                200
+            );
+        } catch (BadOperationException $e) {
             return new JsonResponse(['error' => $e->getMessage()], 400);
         } catch (RepositoryException $e) {
             return new JsonResponse(['error' => 'An application error has occurred'], 500);

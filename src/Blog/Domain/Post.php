@@ -5,6 +5,7 @@ namespace Blog\Domain;
 
 use Blog\Domain\Exception\InvalidBodyException;
 use Blog\Domain\Exception\InvalidTitleException;
+use Blog\Domain\Exception\PostAlreadyPublishedException;
 
 class Post
 {
@@ -74,6 +75,14 @@ class Post
             'body'        => $this->body(),
             'isPublished' => $this->isPublished()
         ];
+    }
+
+    public function publish():void
+    {
+        if ($this->isPublished) {
+            throw PostAlreadyPublishedException::withPostId($this->id());
+        }
+        $this->isPublished = true;
     }
 }
 

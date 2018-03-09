@@ -7,3 +7,10 @@ create_post:
   path: /posts
   defaults: { _controller: BlogBundle:Post:createPost }
   methods: [POST]
+
+publish_post:
+  path: /publish/{postId}
+  defaults: { _controller: BlogBundle:Post:publishPost }
+  methods: [PUT]
+  requirements:
+    postId: '\d+'

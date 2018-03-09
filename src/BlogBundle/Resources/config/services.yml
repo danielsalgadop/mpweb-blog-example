@@ -12,3 +12,9 @@ services:
     public: true
     arguments:
       - "@blog.repository.post"
+
+  blog.command_handler.publish_post:
+    class: Blog\Application\CommandHandler\Post\PublishPostHandler
+    public: true
+    arguments:
+      - "@blog.repository.post"
