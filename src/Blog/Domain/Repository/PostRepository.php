@@ -10,5 +10,7 @@ interface PostRepository
     public function save(Post $post):void;
     public function update(Post $post):void;
     public function findPostByIdOrError(int $postId):Post;
+    public function findAllPosts():array;
+    public function findAllPublishedPosts():array;
 }
 

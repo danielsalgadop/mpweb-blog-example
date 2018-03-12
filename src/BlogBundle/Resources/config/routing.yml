@@ -14,3 +14,8 @@ publish_post:
   methods: [PUT]
   requirements:
     postId: '\d+'
+
+find_posts:
+  path: /posts
+  defaults: { _controller: BlogBundle:Post:findPosts }
+  methods: [GET]

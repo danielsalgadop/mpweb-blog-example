@@ -43,5 +43,26 @@ class MySQLPostRepository implements PostRepository
         }
         return $posts[0];
     }
+
+    public function findAllPosts():array
+    {
+        try {
+            return $this->em->getRepository('BlogBundle:Post')->findAll();
+        } catch (Exception $e) {
+            throw RepositoryException::withError($e);
+        }
+    }
+
+    public function findAllPublishedPosts():array
+    {
+        try {
+            return $this->em
+                ->getRepository('BlogBundle:Post')
+                ->findBy(['isPublished' => true])
+            ;
+        } catch (Exception $e) {
+            throw RepositoryException::withError($e);
+        }
+    }
 }
 

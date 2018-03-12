@@ -44,4 +44,12 @@ Content-Type: application/json
 PUT http://{{ host }}:{{ port }}/publish/5
 Accept: application/json
 
+### Get All Posts
+GET http://{{ host }}:{{ port }}/posts
+Accept: application/json
+
+### Get All Published Posts
+GET http://{{ host }}:{{ port }}/posts?onlyPublished=true
+Accept: application/json
+
 ###

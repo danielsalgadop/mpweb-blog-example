@@ -18,3 +18,9 @@ services:
     public: true
     arguments:
       - "@blog.repository.post"
+
+  blog.command_handler.find_posts:
+    class: Blog\Application\CommandHandler\Post\FindPostsHandler
+    public: true
+    arguments:
+        - "@blog.repository.post"
